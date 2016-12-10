@@ -168,12 +168,25 @@ Wrap Sections
   text-transform: uppercase;
   text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
 }
+#startGame {
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+#gameAreaHeader {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 15px;
+  text-shadow: 2px 1px 0px #fff, 4px 4px 0px rgba(0,0,0,0.15);
+  font-size: 24px;
+}
 
 /* Footer Wrap */
 #f {
-  background: #2d2d2d;
+  background: #000;
   padding-top: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 #footer-txt {
@@ -188,7 +201,7 @@ Wrap Sections
 }
 
 #f i:hover {
-	color: #ff7878;
+  color: #ff7878;
 }
 
 /* ==========================================================================

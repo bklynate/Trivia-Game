@@ -34,4 +34,20 @@ if($('.navbar').length > 0){
  * END OF NAV SCROLL EFFECTS
  */
 
- 
+$(document).ready(function() {
+  var $gameArea =  $(".gameArea");
+  var $gameContent = $("#gameContent");
+
+  function gameup(){
+    
+  }
+
+  $gameArea.hide().fadeOut();
+
+  $("#startGame").on('click', function(){
+    $gameArea.fadeIn("slow");
+
+
+    $gameContent
+  });
+});
