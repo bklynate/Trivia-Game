@@ -61,6 +61,72 @@ var triviaGame = {
         "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
       ]
     }
+    q3: {
+      question: "Which HTML tag is used to define an internal style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='false'><p>A 'css' tag</p></div>",
+        "<div class='answers' data-integrity='false'><p>A 'script' tag</p></div>",
+        "<div class='answers' data-integrity='truth'><p>A 'style' tag</div>",
+        "<div class='answers' data-integrity='false'><p>A 'sheet' tag</div>"
+      ]
+    }
+    q4: {
+      question: "Which is the correct CSS syntax?",
+      answerChoices: [
+        "<div class='answers' data-integrity='false'><p>{body;color:black;}</p></div>",
+        "<div class='answers' data-integrity='false'><p>{body:color=black;}</p></div>",
+        "<div class='answers' data-integrity='truth'><p>body {color: black;}</p></div>",
+        "<div class='answers' data-integrity='false'><p>body:color=black;</p></div>"
+      ]
+    }
+    q5: {
+      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+      ]
+    }
+    q6: {
+      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+      ]
+    }
+    q7: {
+      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+      ]
+    }
+    q8: {
+      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+      ]
+    }
+    q9: {
+      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+      ]
+    }
+    q10: {
+      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+      ]
+    }
   },
 
   randomQuestion: function() {
