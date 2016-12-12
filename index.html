@@ -19,14 +19,75 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <button class="btn btn-success">Start</button>
-          <button class="btn btn-default">Stop</button>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#headerStart">CSS<i class="fa fa-css3" aria-hidden="true"></i></a>
         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/bklynate/Trivia-Game">VIEW CODE</a></li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
       </div>
     </div>
+
+    <section id="headerStart"></section>
+    <div id="headerwrap">
+      <div class="container">
+        <div class="row centered">
+          <div class="col-lg-8 col-lg-offset-2">
+            <h1>It Doesn't Take a Rocket <strong>Scientist</strong> to Master CSS3</h1>
+            <h2>It Takes a Designer</h2>
+            <a href="#gameLink" class="btn btn-primary btn-outline btn-lg" id="startGame">
+              Start Game</a>
+          </div>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!-- headerwrap -->
+
+    <section id="gameLink"></section>
+    <div class="container w" id="gameArea">
+      <div class="row centered">
+        <br><br>
+        <div class="col-md-12">
+          <h4 id="gameAreaHeader">Game Start</h4>
+          <p id="gameContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat ad deserunt eveniet soluta, unde laborum id pariatur maiores aliquid distinctio facere a, omnis consequuntur beatae voluptatum blanditiis consectetur, temporibus nisi.</p>
+          <div id="choices">
+
+          </div>
+        </div>
+        <!-- col-lg-4 -->
+      </div>
+      <!-- row -->
+      <br>
+      <br>
+    </div>
+    <!-- container -->
+    <!-- FOOTER -->
+    <div id="f">
+      <div class="container">
+        <div class="row centered">
+          <p id="footer-txt">Coded With<i class="fa fa-heart"></i> by Nathaniel Quashie</p>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!-- Footer -->
+
+    <!-- javascript files -->
+    <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/gameLogic.js"></script>
   </body>
 
