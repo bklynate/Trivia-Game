@@ -1,4 +1,6 @@
-// Adds Smooth Scroll Effect
+/**
+ * Start of smooth scroll effect
+ */
 $('a[href*="#"]:not([href="#"])').click(function() {
   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
     var target = $(this.hash);
@@ -11,25 +13,25 @@ $('a[href*="#"]:not([href="#"])').click(function() {
     }
   }
 });
-
 /**
-* End of smooth scroll effect
-*/
+ * End of smooth scroll effect
+ */
 
 /**
  * Listen to scroll to change header opacity class
  */
-function checkScroll(){
+function checkScroll() {
   var startY = $('.navbar').height() * 1.0; //The point where the navbar changes in px
 
-  if($(window).scrollTop() > startY){
+  if ($(window).scrollTop() > startY) {
     $('.navbar').addClass("scrolled");
-  }else{
+  }
+  else {
     $('.navbar').removeClass("scrolled");
   }
 }
-if($('.navbar').length > 0){
-  $(window).on("scroll load resize", function(){
+if ($('.navbar').length > 0) {
+  $(window).on("scroll load resize", function() {
     checkScroll();
   });
 }
@@ -38,41 +40,68 @@ if($('.navbar').length > 0){
  */
 
 var $gameArea = $("#gameArea");
+var $gameContentArea = $("#gameContentArea");
 
 var triviaGame = {
   questions: {
     q1: {
-      header: "Question 1",
-      text: "<b>Explain what a class selector is and how it’s used: </b>",
-      choices: [
-        "<div class='answers' data-integrity='truth'><p><span id='questNums'><b>1 )</b></span> A class can be thought of as a grouped collection of CSS attributes applied to HTML elements. This allows you to apply the same styling to multiple HTML elements by placing them in the same CSS class.</p></div>",
-        "<div class='answers' data-integrity='false'><p><span id='questNums'><b>2 )</b></span>A class can be thought of as a single identifier of CSS attributes applied to HTML elements. This allows you to apply the styling to HTML elements by placing them in the same CSS class.</p></div>"
-      ],
-      answer: 0
+      question: "What does CSS stand for?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>Cascading Style Sheets</p></div>",
+        "<div class='answers' data-integrity='false'><p>Colorful Style Sheets</p></div>",
+        "<div class='answers' data-integrity='false'><p>Computer Style Sheets</p></div>",
+        "<div class='answers' data-integrity='false'><p>Creative Style Sheets</p></div>"
+      ]
     },
     q2: {
-      header: "Question 2",
-      text: "Explain what a Id selector is and how it’s used: ",
-      choices: [
-        "<div data-integrity='truth'><p><b>1)</b> A Id can be thought of as a grouped collection of CSS attributes applied to HTML elements. This allows you to apply the same styling to multiple HTML elements by placing them in the same CSS Id.</p></div>",
-        "<div data-integrity='false'><p><b>2)</b>A Id can be thought of as a single identifier of CSS attributes applied to HTML elements. This allows you to apply the styling to HTML elements by placing them in the same CSS Id.</p></div>"
-      ],
-      answer: 1
+      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      answerChoices: [
+        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
+        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+      ]
     }
+  },
+
+  randomQuestion: function() {
+    randomArr = [];
+    for (var question in this.questions) {
+      if (this.questions.hasOwnProperty(question)) {
+        randomArr.push({
+          info: this.questions[question]
+        }); //Dynamic
+      }
+    }
+    randomQuestionIndex = Math.floor(Math.random() * randomArr.length);
+    randomQuestion = randomArr[randomQuestionIndex];
+    $("#gameAreaHeader").html(randomQuestion.info.question).fadeIn("slow");
+
+    $("#choices").html(randomQuestion.info.answerChoices).fadeIn("slow");
   }
 }
 
 $(document).ready(function() {
   $gameArea.hide().fadeOut();
+  $gameContentArea.empty();
 
-  var triGameRef = triviaGame.questions
-  $("#startGame").on('click', function(){
+  $("#startGame").on('click', function() {
     $gameArea.fadeIn("slow");
-    $("#gameAreaHeader").html(triviaGame.questions.q1.header);
-    $("#gameContent").html(triviaGame.questions.q1.text).fadeIn("slow");
-    $("#choices").html(triviaGame.questions.q1.choices).fadeIn("slow");
-    $(".answers").on('click', function(e){
-      console.log($(this).data('integrity'));
+    triviaGame.randomQuestion();
+    $(".answers").hover(function() {
+      $(this).css("color", "white");
+      $(this).css("background-color", "black");
+    }, function() {
+      $(this).css("color", "black");
+      $(this).css("background-color", "#f2f2f2");
+    });
+    $(".answers").on('click', function() {
+      var data = $(this).data('integrity');
+      if (data === "truth") {
+        alert("TRUE")
+      }
+      else {
+        alert('WRONG!!');
+      }
     });
   });
 });
