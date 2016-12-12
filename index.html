@@ -28,7 +28,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CSS<i class="fa fa-css3" aria-hidden="true"></i></a>
+          <a class="navbar-brand" href="#headerStart">CSS<i class="fa fa-css3" aria-hidden="true"></i></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -38,6 +38,7 @@
       </div>
     </div>
 
+    <section id="headerStart"></section>
     <div id="headerwrap">
       <div class="container">
         <div class="row centered">
@@ -52,12 +53,13 @@
     </div><!-- headerwrap -->
 
     <section id="gameLink"></section>
-    <div class="container w gameArea">
+    <div class="container w" id="gameArea">
       <div class="row centered">
         <br><br>
         <div class="col-md-12">
           <h4 id="gameAreaHeader">Game Start</h4>
-          <p id='gameContent'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat ad deserunt eveniet soluta, unde laborum id pariatur maiores aliquid distinctio facere a, omnis consequuntur beatae voluptatum blanditiis consectetur, temporibus nisi.</p>
+          <p id="gameContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat ad deserunt eveniet soluta, unde laborum id pariatur maiores aliquid distinctio facere a, omnis consequuntur beatae voluptatum blanditiis consectetur, temporibus nisi.</p>
+          <span id="choices"></span>
         </div><!-- col-lg-4 -->
       </div><!-- row -->
       <br>
@@ -73,6 +75,7 @@
     </div><!-- Footer -->
 
     <!-- javascript files -->
+    <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/gameLogic.js"></script>
   </body>
 
