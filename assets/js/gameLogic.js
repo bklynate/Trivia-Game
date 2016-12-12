@@ -45,8 +45,8 @@ var triviaGame = {
       header: "Question 1",
       text: "<b>Explain what a class selector is and how it’s used: </b>",
       choices: [
-        "<p><span id='questNums'><b>1 )</b></span> A class can be thought of as a grouped collection of CSS attributes applied to HTML elements. This allows you to apply the same styling to multiple HTML elements by placing them in the same CSS class.</p>",
-        "<p><span id='questNums'><b>2 )</b></span>A class can be thought of as a single identifier of CSS attributes applied to HTML elements. This allows you to apply the styling to HTML elements by placing them in the same CSS class.</p>"
+        "<div class='answers' data-integrity='truth'><p><span id='questNums'><b>1 )</b></span> A class can be thought of as a grouped collection of CSS attributes applied to HTML elements. This allows you to apply the same styling to multiple HTML elements by placing them in the same CSS class.</p></div>",
+        "<div class='answers' data-integrity='false'><p><span id='questNums'><b>2 )</b></span>A class can be thought of as a single identifier of CSS attributes applied to HTML elements. This allows you to apply the styling to HTML elements by placing them in the same CSS class.</p></div>"
       ],
       answer: 0
     },
@@ -54,8 +54,8 @@ var triviaGame = {
       header: "Question 2",
       text: "Explain what a Id selector is and how it’s used: ",
       choices: [
-        "<p><b>1)</b> A Id can be thought of as a grouped collection of CSS attributes applied to HTML elements. This allows you to apply the same styling to multiple HTML elements by placing them in the same CSS Id.</p>",
-        "<p><b>2)</b>A Id can be thought of as a single identifier of CSS attributes applied to HTML elements. This allows you to apply the styling to HTML elements by placing them in the same CSS Id.</p>"
+        "<div data-integrity='truth'><p><b>1)</b> A Id can be thought of as a grouped collection of CSS attributes applied to HTML elements. This allows you to apply the same styling to multiple HTML elements by placing them in the same CSS Id.</p></div>",
+        "<div data-integrity='false'><p><b>2)</b>A Id can be thought of as a single identifier of CSS attributes applied to HTML elements. This allows you to apply the styling to HTML elements by placing them in the same CSS Id.</p></div>"
       ],
       answer: 1
     }
@@ -71,8 +71,8 @@ $(document).ready(function() {
     $("#gameAreaHeader").html(triviaGame.questions.q1.header);
     $("#gameContent").html(triviaGame.questions.q1.text).fadeIn("slow");
     $("#choices").html(triviaGame.questions.q1.choices).fadeIn("slow");
-    $("#choices").on('click', function(){
-      
-    })
+    $(".answers").on('click', function(e){
+      console.log($(this).data('integrity'));
+    });
   });
 });
