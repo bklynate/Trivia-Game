@@ -45,12 +45,15 @@ var $gameContentArea = $("#gameContentArea");
 var $timerClockArea = $("#timerClockArea");
 
 var triviaGame = {
+  
   // game variables
   correctGuesses: 0,
   wrongGuesses: 0,
   timeLimit: 120, // 2mins
   countDownStarted: false,
+  gameOver: false,
 
+  // questions object
   questions: {
     q1: {
       question: "What does CSS stand for?",
@@ -148,7 +151,7 @@ var triviaGame = {
       if (this.questions.hasOwnProperty(question)) {
         randomArr.push({
           info: this.questions[question]
-        }); //Dynamic
+        });
       }
     }
     randomQuestionIndex = Math.floor(Math.random() * randomArr.length);
