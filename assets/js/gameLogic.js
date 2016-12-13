@@ -39,13 +39,17 @@ if ($('.navbar').length > 0) {
  * END OF NAV SCROLL EFFECTS
  */
 
+// jQuery variables
 var $gameArea = $("#gameArea");
 var $gameContentArea = $("#gameContentArea");
+var $timerClockArea = $("#timerClockArea");
 
 var triviaGame = {
+  // game variables
   correctGuesses: 0,
   wrongGuesses: 0,
-  timeLimit: 211, // 3mins 30secs
+  timeLimit: 120, // 2mins
+  countDownStarted: false,
 
   questions: {
     q1: {
@@ -111,7 +115,7 @@ var triviaGame = {
       ]
     },
     q8: {
-      question: "What is the correct CSS syntax for making all the <p> elements bold?",
+      question: "What is the correct CSS syntax for making all the &#60p&#62 elements bold?",
       answerChoices: [
         "<div class='answers' data-integrity='false'><p>&#60;p style='text-size:bold;'></p></div>",
         "<div class='answers' data-integrity='truth'><p>p {font-weight:bold;}</p></div>",
@@ -155,7 +159,7 @@ var triviaGame = {
 
   decrement: function(){
     triviaGame.timeLimit--
-    console.log(triviaGame.timeLimit);
+    $timerClockArea.html(triviaGame.timeLimit);
   },
 
   startCountdown: function () {
@@ -164,7 +168,10 @@ var triviaGame = {
 
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    this.startCountdown();
+    if(!this.countDownStarted){
+      this.startCountdown();
+      this.countDownStarted = true;
+    }
     this.randomQuestion();
   },
 
