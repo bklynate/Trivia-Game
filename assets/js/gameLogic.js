@@ -45,6 +45,7 @@ var $gameContentArea = $("#gameContentArea");
 var triviaGame = {
   correctGuesses: 0,
   wrongGuesses: 0,
+  timeLimit: 211, // 3mins 30secs
 
   questions: {
     q1: {
@@ -83,11 +84,12 @@ var triviaGame = {
       ]
     },
     q5: {
-      question: "Where in an HTML document is the correct place to refer to an external style sheet?",
+      question: "How do you change the font of an element?",
       answerChoices: [
-        "<div class='answers' data-integrity='truth'><p>In the 'head' section</p></div>",
-        "<div class='answers' data-integrity='false'><p>In the 'body' section</p></div>",
-        "<div class='answers' data-integrity='false'><p>At the end of the document</p></div>"
+        "<div class='answers' data-integrity='false'><p>font-style</p></div>",
+        "<div class='answers' data-integrity='false'><p>font-face</p></div>",
+        "<div class='answers' data-integrity='truth'><p>font-family</p></div>",
+        "<div class='answers' data-integrity='false'><p>font-type</p></div>"
       ]
     },
     q6: {
@@ -128,9 +130,9 @@ var triviaGame = {
     q10: {
       question: "How do you display all hyperlinks without an underline?",
       answerChoices: [
-        "<div class='answers' data-integrity='truth'><p>a {text-decoration:no-underline;}</p></div>",
+        "<div class='answers' data-integrity='truth'><p>a {text-decoration:none;}</p></div>",
         "<div class='answers' data-integrity='false'><p>a {underline:none;}</p></div>",
-        "<div class='answers' data-integrity='false'><p>a {decoration:no-underline;}</p></div>",
+        "<div class='answers' data-integrity='false'><p>a {text-decoration:no-underline;}</p></div>",
         "<div class='answers' data-integrity='false'><p>a {font-decoration:none;}</p></div>"
       ]
     }
@@ -151,8 +153,18 @@ var triviaGame = {
     $("#choices").html(randomQuestion.info.answerChoices).fadeIn("slow");
   },
 
+  decrement: function(){
+    triviaGame.timeLimit--
+    console.log(triviaGame.timeLimit);
+  },
+
+  startCountdown: function () {
+    countdownClock = setInterval(triviaGame.decrement, 1000);
+  },
+
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
+    this.startCountdown();
     this.randomQuestion();
   },
 
