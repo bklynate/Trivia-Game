@@ -179,6 +179,15 @@ Wrap Sections
   letter-spacing: 4px;
 }
 
+#headerStart{
+  position: absolute;
+  top: 0;
+}
+
+#gameArea {
+  height: 720px;
+}
+
 #gameAreaHeader {
   letter-spacing: 5px;
   text-transform: uppercase;
@@ -187,6 +196,7 @@ Wrap Sections
   text-shadow: 2px 1px 0px #fff, 4px 4px 0px rgba(0, 0, 0, 0.15);
   font-size: 28px;
   font-weight: 300;
+  margin-top: 170px;
 }
 
 .answers {

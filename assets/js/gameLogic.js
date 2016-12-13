@@ -152,11 +152,13 @@ var triviaGame = {
   },
 
   handleCorrectGuesses: function() {
-
+    this.correctGuesses += 1;
+    this.randomQuestion();
   },
 
   handleWrongGuesses: function() {
-    
+    this.wrongGuesses += 1;
+    this.randomQuestion();
   }
 }
 
@@ -180,10 +182,9 @@ $(document).ready(function() {
     $(".answers").on('click', function() {
       var data = $(this).data('integrity');
       if (data === "truth") {
-        alert("TRUE")
-      }
-      else {
-        alert('WRONG!!');
+        triviaGame.handleCorrectGuesses();
+      } else {
+        triviaGame.handleWrongGuesses();
       }
     });
   });
