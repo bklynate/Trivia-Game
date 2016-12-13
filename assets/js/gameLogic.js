@@ -45,7 +45,7 @@ var $gameContentArea = $("#gameContentArea");
 var $timerClockArea = $("#timerClockArea");
 
 var triviaGame = {
-  
+
   // game variables
   correctGuesses: 0,
   wrongGuesses: 0,
@@ -160,18 +160,18 @@ var triviaGame = {
     $("#choices").html(randomQuestion.info.answerChoices).fadeIn("slow");
   },
 
-  decrement: function(){
+  decrement: function() {
     triviaGame.timeLimit--
-    $timerClockArea.html(triviaGame.timeLimit);
+      $timerClockArea.html(triviaGame.timeLimit);
   },
 
-  startCountdown: function () {
+  startCountdown: function() {
     countdownClock = setInterval(triviaGame.decrement, 1000);
   },
 
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    if(!this.countDownStarted){
+    if (!this.countDownStarted) {
       this.startCountdown();
       this.countDownStarted = true;
     }
@@ -180,7 +180,11 @@ var triviaGame = {
 
   handleWrongGuesses: function() {
     this.wrongGuesses += 1;
-    this.randomQuestion();
+    if (!this.countDownStarted) {
+      this.startCountdown();
+      this.countDownStarted = true;
+    }
+    console.log(this);
   }
 }
 
@@ -193,19 +197,12 @@ $(document).ready(function() {
 
     triviaGame.randomQuestion();
 
-    $(".answers").hover(function() {
-      $(this).css("color", "white");
-      $(this).css("background-color", "black");
-    }, function() {
-      $(this).css("color", "black");
-      $(this).css("background-color", "#f2f2f2");
-    });
-
     $(".answers").on('click', function() {
       var data = $(this).data('integrity');
       if (data === "truth") {
         triviaGame.handleCorrectGuesses();
-      } else {
+      }
+      else {
         triviaGame.handleWrongGuesses();
       }
     });
