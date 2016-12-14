@@ -171,20 +171,20 @@ var triviaGame = {
 
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    if (!this.countDownStarted) {
-      this.startCountdown();
-      this.countDownStarted = true;
-    }
+    // if (!this.countDownStarted) {
+    //   this.startCountdown();
+    //   this.countDownStarted = true;
+    // }
     this.randomQuestion();
   },
 
   handleWrongGuesses: function() {
     this.wrongGuesses += 1;
-    if (!this.countDownStarted) {
-      this.startCountdown();
-      this.countDownStarted = true;
-    }
-    console.log(this);
+    // if (!this.countDownStarted) {
+    //   this.startCountdown();
+    //   this.countDownStarted = true;
+    // }
+    this.randomQuestion();
   }
 }
 
@@ -196,15 +196,15 @@ $(document).ready(function() {
     $gameArea.fadeIn("slow");
 
     triviaGame.randomQuestion();
+  });
 
-    $(".answers").on('click', function() {
-      var data = $(this).data('integrity');
-      if (data === "truth") {
-        triviaGame.handleCorrectGuesses();
-      }
-      else {
-        triviaGame.handleWrongGuesses();
-      }
-    });
+  $(".answers").on('click', function() {
+    var data = $(this).data('integrity');
+    if (data === "truth") {
+      triviaGame.handleCorrectGuesses();
+    }
+    else {
+      triviaGame.handleWrongGuesses();
+    }
   });
 });
