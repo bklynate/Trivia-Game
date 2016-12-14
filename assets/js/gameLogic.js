@@ -52,6 +52,7 @@ var triviaGame = {
   timeLimit: 120, // 2mins
   countDownStarted: false,
   gameOver: false,
+  questionCollection: [],
 
   // questions object
   questions: {
@@ -146,18 +147,20 @@ var triviaGame = {
   },
 
   randomQuestion: function() {
-    randomArr = [];
-    for (var question in this.questions) {
-      if (this.questions.hasOwnProperty(question)) {
-        randomArr.push({
-          info: this.questions[question]
-        });
+    if (this.questionCollection.length === 0 && this.countDownStarted === false) {
+      for (var question in this.questions) {
+        if (this.questions.hasOwnProperty(question)) {
+          this.questionCollection.push({
+            info: this.questions[question]
+          });
+        }
       }
     }
-    randomQuestionIndex = Math.floor(Math.random() * randomArr.length);
-    randomQuestion = randomArr[randomQuestionIndex];
-    $("#gameAreaHeader").html(randomQuestion.info.question).fadeIn("slow");
-    $("#choices").html(randomQuestion.info.answerChoices).fadeIn("slow");
+    // this.checkOutcomes();
+    randomQuestionIndex = Math.floor(Math.random() * this.questionCollection.length);
+    randomQuestion = this.questionCollection.splice(randomQuestionIndex, 1);
+    $("#gameAreaHeader").html(randomQuestion[0].info.question).fadeIn("slow");
+    $("#choices").html(randomQuestion[0].info.answerChoices).fadeIn("slow");
     $(".answers").on('click', function() {
       var data = $(this).data('integrity');
       if (data === "truth") {
@@ -210,6 +213,12 @@ var triviaGame = {
       this.countDownStarted = true;
     }
     this.randomQuestion();
+  },
+
+  checkOutcomes: function() {
+    if (this.questionCollection === 0) {
+
+    }
   }
 }
 

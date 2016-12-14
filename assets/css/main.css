@@ -179,7 +179,7 @@ Wrap Sections
   letter-spacing: 4px;
 }
 
-#headerStart{
+#headerStart {
   position: absolute;
   top: 0;
 }
@@ -199,9 +199,10 @@ Wrap Sections
   margin-top: 170px;
 }
 
-#choices{
+#choices {
   margin-bottom: 60px;
 }
+
 #timerClockArea {
   font-size: 34px;
 }
@@ -219,6 +220,7 @@ Wrap Sections
   background-color: #000;
   font-size: 23px;
 }
+
 
 /* Footer Wrap */
 
