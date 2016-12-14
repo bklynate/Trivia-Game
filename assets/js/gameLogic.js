@@ -158,32 +158,57 @@ var triviaGame = {
     randomQuestion = randomArr[randomQuestionIndex];
     $("#gameAreaHeader").html(randomQuestion.info.question).fadeIn("slow");
     $("#choices").html(randomQuestion.info.answerChoices).fadeIn("slow");
+    $(".answers").on('click', function() {
+      var data = $(this).data('integrity');
+      if (data === "truth") {
+        console.log('right');
+        triviaGame.handleCorrectGuesses();
+      }
+      else {
+        console.log('wrong');
+        triviaGame.handleWrongGuesses();
+      }
+    });
   },
 
   decrement: function() {
     triviaGame.timeLimit--
-      $timerClockArea.html(triviaGame.timeLimit);
+      $timerClockArea.html(triviaGame.formatSeconds(triviaGame.timeLimit));
   },
 
   startCountdown: function() {
-    countdownClock = setInterval(triviaGame.decrement, 1000);
+    countdownClock = setInterval(this.decrement, 1000);
+  },
+
+  formatSeconds: function(totalSeconds) {
+    var seconds = totalSeconds % 60;
+    var minutes = Math.floor(totalSeconds / 60);
+
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    return minutes + ":" + seconds;
   },
 
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    // if (!this.countDownStarted) {
-    //   this.startCountdown();
-    //   this.countDownStarted = true;
-    // }
+    if (!this.countDownStarted) {
+      this.startCountdown();
+      this.countDownStarted = true;
+    }
     this.randomQuestion();
   },
 
   handleWrongGuesses: function() {
     this.wrongGuesses += 1;
-    // if (!this.countDownStarted) {
-    //   this.startCountdown();
-    //   this.countDownStarted = true;
-    // }
+    if (!this.countDownStarted) {
+      this.startCountdown();
+      this.countDownStarted = true;
+    }
     this.randomQuestion();
   }
 }
@@ -192,19 +217,9 @@ $(document).ready(function() {
   $gameArea.hide().fadeOut();
   $gameContentArea.empty();
 
+  triviaGame.randomQuestion();
+
   $("#startGame").on('click', function() {
     $gameArea.fadeIn("slow");
-
-    triviaGame.randomQuestion();
-  });
-
-  $(".answers").on('click', function() {
-    var data = $(this).data('integrity');
-    if (data === "truth") {
-      triviaGame.handleCorrectGuesses();
-    }
-    else {
-      triviaGame.handleWrongGuesses();
-    }
   });
 });
