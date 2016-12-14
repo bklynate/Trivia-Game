@@ -45,7 +45,7 @@ var $gameContentArea = $("#gameContentArea");
 var $timerClockArea = $("#timerClockArea");
 
 var triviaGame = {
-  
+
   // game variables
   correctGuesses: 0,
   wrongGuesses: 0,
@@ -158,28 +158,42 @@ var triviaGame = {
     randomQuestion = randomArr[randomQuestionIndex];
     $("#gameAreaHeader").html(randomQuestion.info.question).fadeIn("slow");
     $("#choices").html(randomQuestion.info.answerChoices).fadeIn("slow");
+    $(".answers").on('click', function() {
+      var data = $(this).data('integrity');
+      if (data === "truth") {
+        console.log('right');
+        triviaGame.handleCorrectGuesses();
+      } else {
+        console.log('wrong');
+        triviaGame.handleWrongGuesses();
+      }
+    });
   },
 
-  decrement: function(){
+  decrement: function() {
     triviaGame.timeLimit--
     $timerClockArea.html(triviaGame.timeLimit);
   },
 
-  startCountdown: function () {
-    countdownClock = setInterval(triviaGame.decrement, 1000);
+  startCountdown: function() {
+    countdownClock = setInterval(this.decrement, 1000);
   },
 
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    if(!this.countDownStarted){
-      this.startCountdown();
-      this.countDownStarted = true;
-    }
+    // if (!this.countDownStarted) {
+    //   this.startCountdown();
+    //   this.countDownStarted = true;
+    // }
     this.randomQuestion();
   },
 
   handleWrongGuesses: function() {
     this.wrongGuesses += 1;
+    // if (!this.countDownStarted) {
+    //   this.startCountdown();
+    //   this.countDownStarted = true;
+    // }
     this.randomQuestion();
   }
 }
@@ -188,26 +202,9 @@ $(document).ready(function() {
   $gameArea.hide().fadeOut();
   $gameContentArea.empty();
 
+  triviaGame.randomQuestion();
+
   $("#startGame").on('click', function() {
     $gameArea.fadeIn("slow");
-
-    triviaGame.randomQuestion();
-
-    $(".answers").hover(function() {
-      $(this).css("color", "white");
-      $(this).css("background-color", "black");
-    }, function() {
-      $(this).css("color", "black");
-      $(this).css("background-color", "#f2f2f2");
-    });
-
-    $(".answers").on('click', function() {
-      var data = $(this).data('integrity');
-      if (data === "truth") {
-        triviaGame.handleCorrectGuesses();
-      } else {
-        triviaGame.handleWrongGuesses();
-      }
-    });
   });
 });

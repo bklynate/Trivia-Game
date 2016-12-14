@@ -178,7 +178,7 @@ Wrap Sections
   font-size: 12px;
   letter-spacing: 4px;
 }
-  
+
 #headerStart{
   position: absolute;
   top: 0;
@@ -207,6 +207,11 @@ Wrap Sections
   font-size: 19px;
 }
 
+.answers:hover {
+  color: #fff;
+  background-color: #000;
+  font-size: 23px;
+}
 
 /* Footer Wrap */
 
