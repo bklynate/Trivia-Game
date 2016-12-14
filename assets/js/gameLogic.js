@@ -156,7 +156,7 @@ var triviaGame = {
         }
       }
     }
-    // this.checkOutcomes();
+    this.checkOutcomes();
     randomQuestionIndex = Math.floor(Math.random() * this.questionCollection.length);
     randomQuestion = this.questionCollection.splice(randomQuestionIndex, 1);
     $("#gameAreaHeader").html(randomQuestion[0].info.question).fadeIn("slow");
@@ -216,8 +216,9 @@ var triviaGame = {
   },
 
   checkOutcomes: function() {
-    if (this.questionCollection === 0) {
-
+    if (this.questionCollection.length === 0) {
+      clearInterval(countdownClock)
+        // $gameContentArea
     }
   }
 }
