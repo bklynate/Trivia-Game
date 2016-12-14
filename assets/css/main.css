@@ -199,6 +199,13 @@ Wrap Sections
   margin-top: 170px;
 }
 
+#choices{
+  margin-bottom: 60px;
+}
+#timerClockArea {
+  font-size: 34px;
+}
+
 .answers {
   width: 30%;
   margin: 0 auto;

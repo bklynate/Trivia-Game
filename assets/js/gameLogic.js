@@ -172,11 +172,25 @@ var triviaGame = {
 
   decrement: function() {
     triviaGame.timeLimit--
-      $timerClockArea.html(triviaGame.timeLimit);
+    $timerClockArea.html(triviaGame.formatSeconds(triviaGame.timeLimit));
   },
 
   startCountdown: function() {
     countdownClock = setInterval(this.decrement, 1000);
+  },
+
+  formatSeconds: function(totalSeconds){
+    var seconds = totalSeconds % 60;
+    var minutes = Math.floor(totalSeconds / 60);
+
+    if(seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if(minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    return minutes + ":" + seconds;
   },
 
   handleCorrectGuesses: function() {
