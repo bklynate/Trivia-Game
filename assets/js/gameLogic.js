@@ -172,7 +172,7 @@ var triviaGame = {
 
   decrement: function() {
     triviaGame.timeLimit--
-    $timerClockArea.html(triviaGame.timeLimit);
+      $timerClockArea.html(triviaGame.timeLimit);
   },
 
   startCountdown: function() {
@@ -181,19 +181,19 @@ var triviaGame = {
 
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    // if (!this.countDownStarted) {
-    //   this.startCountdown();
-    //   this.countDownStarted = true;
-    // }
+    if (!this.countDownStarted) {
+      this.startCountdown();
+      this.countDownStarted = true;
+    }
     this.randomQuestion();
   },
 
   handleWrongGuesses: function() {
     this.wrongGuesses += 1;
-    // if (!this.countDownStarted) {
-    //   this.startCountdown();
-    //   this.countDownStarted = true;
-    // }
+    if (!this.countDownStarted) {
+      this.startCountdown();
+      this.countDownStarted = true;
+    }
     this.randomQuestion();
   }
 }
