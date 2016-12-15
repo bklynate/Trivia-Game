@@ -52,7 +52,7 @@ var triviaGame = {
   // game variables
   correctGuesses: 0,
   wrongGuesses: 0,
-  timeLimit: 120, // 2mins
+  timeLimit: 90, // 01:30
   countDownStarted: false,
   questionCollection: [],
 
