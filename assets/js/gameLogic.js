@@ -51,9 +51,8 @@ var triviaGame = {
   // game variables
   correctGuesses: 0,
   wrongGuesses: 0,
-  timeLimit: 120, // 2mins
+  timeLimit: 30, // 30secs
   countDownStarted: false,
-  gameOver: false,
   questionCollection: [],
 
   // questions object
@@ -148,6 +147,7 @@ var triviaGame = {
     }
   },
 
+  // assigns a random question to the DOM
   randomQuestion: function() {
     if (this.questionCollection.length === 0 && this.countDownStarted === false) {
       for (var question in this.questions) {
@@ -176,9 +176,18 @@ var triviaGame = {
     });
   },
 
+  //
   decrement: function() {
-    triviaGame.timeLimit--;
-    $timerClockArea.html(triviaGame.formatSeconds(triviaGame.timeLimit));
+    console.log(triviaGame.timeLimit);
+    if (triviaGame.timeLimit > 0) {
+      triviaGame.timeLimit--;
+      $timerClockArea.html(triviaGame.formatSeconds(triviaGame.timeLimit));
+    }
+    else {
+      $timerClockArea.css("color", "red");
+      $timerClockArea.effect("pulsate");
+      triviaGame.checkOutcomes();
+    }
   },
 
   startCountdown: function() {
@@ -201,40 +210,46 @@ var triviaGame = {
 
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    if (!this.countDownStarted) {
-      this.startCountdown();
-      this.countDownStarted = true;
-    }
+    // if (!this.countDownStarted) {
+    //   this.startCountdown();
+    //   this.countDownStarted = true;
+    // }
     this.randomQuestion();
   },
 
   handleWrongGuesses: function() {
     this.wrongGuesses += 1;
-    if (!this.countDownStarted) {
-      this.startCountdown();
-      this.countDownStarted = true;
-    }
+    // if (!this.countDownStarted) {
+    //   this.startCountdown();
+    //   this.countDownStarted = true;
+    // }
     this.randomQuestion();
   },
 
   checkOutcomes: function() {
-    if (this.questionCollection.length === 0) {
+    if (this.questionCollection.length === 0 || triviaGame.timeLimit === 0) {
       clearInterval(countdownClock);
       $choices.empty();
-      $timerClockArea.html("00:00");
       $gameAreaHeader.html("Here are the results: ");
-      $gameContentArea.html("GAME OVER BRAH").fadeIn('slow');
+      $("#correctGuesses").html("Number of Correct Guesses: " + triviaGame.correctGuesses).fadeIn('slow');
+      $("#wrongGuesses").html("Number of Wrong Guesses: " + triviaGame.wrongGuesses).fadeIn('slow');
+      var grade = ((triviaGame.correctGuesses / 10)) * 100;
+      $("#grade").html("Grade: " + grade + "%").fadeIn('slow');
+      $timerClockArea.effect("pulsate");
     }
   }
 }
 
 $(document).ready(function() {
   $gameArea.hide().fadeOut();
-  $gameContentArea.empty();
 
   triviaGame.randomQuestion();
 
   $("#startGame").on('click', function() {
     $gameArea.fadeIn("slow");
+    if (!triviaGame.countDownStarted) {
+      triviaGame.startCountdown();
+      triviaGame.countDownStarted = true;
+    }
   });
 });
