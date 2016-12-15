@@ -45,6 +45,7 @@ var $gameContentArea = $("#gameContentArea");
 var $timerClockArea = $("#timerClockArea");
 var $choices = $("#choices");
 var $gameAreaHeader = $("#gameAreaHeader");
+var $startGame = $("#startGame");
 
 var triviaGame = {
 
@@ -247,11 +248,15 @@ var triviaGame = {
 
 // the 'game engine' - handles the game mechanics
 $(document).ready(function() {
+  // this hides the main game area
+  // allows for the effect of the start button
   $gameArea.hide().fadeOut();
 
+  // populates the first random question to the DOM
   triviaGame.randomQuestion();
 
-  $("#startGame").on('click', function() {
+  // Add a click event to the 'S T A R T G A M E' button
+  $startGame.on('click', function() {
     $gameArea.fadeIn("slow");
     if (!triviaGame.countDownStarted) {
       triviaGame.startCountdown();
