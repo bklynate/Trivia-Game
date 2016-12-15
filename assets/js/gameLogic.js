@@ -43,6 +43,8 @@ if ($('.navbar').length > 0) {
 var $gameArea = $("#gameArea");
 var $gameContentArea = $("#gameContentArea");
 var $timerClockArea = $("#timerClockArea");
+var $choices = $("#choices");
+var $gameAreaHeader = $("#gameAreaHeader");
 
 var triviaGame = {
 
@@ -175,8 +177,8 @@ var triviaGame = {
   },
 
   decrement: function() {
-    triviaGame.timeLimit--
-      $timerClockArea.html(triviaGame.formatSeconds(triviaGame.timeLimit));
+    triviaGame.timeLimit--;
+    $timerClockArea.html(triviaGame.formatSeconds(triviaGame.timeLimit));
   },
 
   startCountdown: function() {
@@ -217,8 +219,11 @@ var triviaGame = {
 
   checkOutcomes: function() {
     if (this.questionCollection.length === 0) {
-      clearInterval(countdownClock)
-        // $gameContentArea
+      clearInterval(countdownClock);
+      $choices.empty();
+      $timerClockArea.html("00:00");
+      $gameAreaHeader.html("Here are the results: ");
+      $gameContentArea.html("GAME OVER BRAH").fadeIn('slow');
     }
   }
 }
