@@ -221,6 +221,14 @@ Wrap Sections
   font-size: 23px;
 }
 
+#grade,
+#correctGuesses,
+#wrongGuesses {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 15px;
+}
+
 
 /* Footer Wrap */
 
@@ -232,11 +240,12 @@ Wrap Sections
 
 #footer-txt {
   color: #bbb;
+  font-size: 12px;
 }
 
 #f i {
   color: #fff;
-  font-size: 30px;
+  font-size: 23px;
   padding: 10px;
   text-align: center;
 }
