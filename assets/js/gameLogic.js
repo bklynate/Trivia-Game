@@ -176,7 +176,7 @@ var triviaGame = {
     });
   },
 
-  //
+  // handles the countdown
   decrement: function() {
     console.log(triviaGame.timeLimit);
     if (triviaGame.timeLimit > 0) {
@@ -190,10 +190,12 @@ var triviaGame = {
     }
   },
 
+  // starts the countdown
   startCountdown: function() {
     countdownClock = setInterval(this.decrement, 1000);
   },
 
+  // formats triviaGame.timeLimit into a '00:00' style
   formatSeconds: function(totalSeconds) {
     var seconds = totalSeconds % 60;
     var minutes = Math.floor(totalSeconds / 60);
@@ -208,24 +210,19 @@ var triviaGame = {
     return minutes + ":" + seconds;
   },
 
+  // adds one to the correct guesses counter
   handleCorrectGuesses: function() {
     this.correctGuesses += 1;
-    // if (!this.countDownStarted) {
-    //   this.startCountdown();
-    //   this.countDownStarted = true;
-    // }
     this.randomQuestion();
   },
 
+  // adds one to the wrong guesses counter
   handleWrongGuesses: function() {
     this.wrongGuesses += 1;
-    // if (!this.countDownStarted) {
-    //   this.startCountdown();
-    //   this.countDownStarted = true;
-    // }
     this.randomQuestion();
   },
 
+  // checks if game ending conditions have been met
   checkOutcomes: function() {
     if (this.questionCollection.length === 0 || triviaGame.timeLimit === 0) {
       clearInterval(countdownClock);
@@ -236,10 +233,19 @@ var triviaGame = {
       var grade = ((triviaGame.correctGuesses / 10)) * 100;
       $("#grade").html("Grade: " + grade + "%").fadeIn('slow');
       $timerClockArea.effect("pulsate");
+      triviaGame.resetGame()
     }
+  },
+
+ // resets the game
+  resetGame: function () {
+    setTimeout(function() {
+      location.reload();
+    }, 4700);
   }
 }
 
+// the 'game engine' - handles the game mechanics
 $(document).ready(function() {
   $gameArea.hide().fadeOut();
 
