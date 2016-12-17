@@ -16,7 +16,6 @@ body {
   margin-top: 70px;
 }
 
-
 /* Titles */
 
 h1,
@@ -30,7 +29,6 @@ h6 {
   color: #333;
 }
 
-
 /* Paragraph & Typographic */
 
 p {
@@ -41,7 +39,6 @@ p {
 .centered {
   text-align: center;
 }
-
 
 /* Links */
 
@@ -113,7 +110,6 @@ a:after {
   letter-spacing: 1px;
 }
 
-
 /*TILT*/
 
 .tilt {
@@ -131,7 +127,6 @@ a:after {
   -ms-transform: rotate(-10deg);
   transform: rotate(-10deg);
 }
-
 
 /* ==========================================================================
 Wrap Sections
@@ -233,7 +228,6 @@ Wrap Sections
   margin-bottom: 30px;
 }
 
-
 /* Footer Wrap */
 
 #f {
@@ -257,7 +251,6 @@ Wrap Sections
 #f i:hover {
   color: #ff7878;
 }
-
 
 /* ==========================================================================
 Button CSS Section
